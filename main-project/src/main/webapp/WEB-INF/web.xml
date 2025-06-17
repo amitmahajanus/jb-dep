@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebAPP_ID" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="">
+<web-app 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5"> 
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
@@ -20,8 +23,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    
+    <!-- Changed from "/" to more specific pattern -->
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>  <!-- Or use "/app/*" -->
     </servlet-mapping>
 </web-app>

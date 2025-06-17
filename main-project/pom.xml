@@ -13,6 +13,13 @@
             <artifactId>dependent-project</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        
+        <!-- Spring 5.3.30 Dependencies (Fixed) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId> <!-- Required for DispatcherServlet -->
+            <version>5.3.30</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -23,6 +30,8 @@
             <artifactId>spring-web</artifactId>
             <version>5.3.30</version>
         </dependency>
+        
+        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -33,5 +42,32 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.36</version>
         </dependency>
+        
+        <!-- Servlet API (Required for WAR) -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope> <!-- JBoss provides this -->
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>internal-repo</id>
+            <url>http://example.com/maven-repo</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <finalName>main-project</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <!-- No need for manual lib inclusion if using Maven dependencies -->
+            </plugin>
+        </plugins>
+    </build>
 </project>
